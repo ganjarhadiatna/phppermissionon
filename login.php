@@ -6,6 +6,7 @@
 </head>
 <body>
 <div class="body">
+<?php if (empty($ss->get('iduser'))) { ?>
 	<?php if (isset($_POST['login'])) { ?>
 			<?php 
 				$email = $_POST['email'];
@@ -19,6 +20,7 @@
 						//create session
 						$ss->set('iduser', $dt['idusers']);
 						$ss->set('status', $dt['status']);
+						$ss->set('name', $dt['name']);
 					?>
 				<?php } ?>
 				<div class="frame-login">
@@ -28,7 +30,7 @@
 					<div class="mid">
 						<div class="block">
 							<a href="<?php echo base_url(); ?>">
-								<input type="button" name="logout" class="btn btn-main-color btn-width-all" value="Next">
+								<input type="button" name="next" class="btn btn-main-color btn-width-all" value="Next">
 							</a>
 						</div>
 					</div>
@@ -42,7 +44,7 @@
 				<div class="mid">
 					<div class="block">
 						<a href="<?php echo base_url('login.php'); ?>">
-							<input type="button" name="logout" class="btn btn-main-color btn-width-all" value="Try Again">
+							<input type="button" name="login" class="btn btn-main-color btn-width-all" value="Try Again">
 						</a>
 					</div>
 				</div>
@@ -97,6 +99,20 @@
 			<div class="bot"></div>
 		</div>
 	<?php } ?>
+<?php } else { ?>
+	<div class="frame-login">
+		<div class="top">
+			<h1>You are Signed</h1>
+		</div>
+		<div class="mid">
+			<div class="block">
+				<a href="<?php echo base_url('logout.php'); ?>">
+					<input type="button" name="logout" class="btn btn-main-color btn-width-all" value="Logout">
+				</a>
+			</div>
+		</div>
+	</div>
+<?php } ?>
 </div>
 </body>
 </html>

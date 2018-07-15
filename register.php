@@ -21,8 +21,8 @@
 				</div>
 				<div class="mid">
 					<div class="block">
-						<a href="<?php echo base_url('login.php'); ?>">
-							<input type="button" name="logout" class="btn btn-main-color btn-width-all" value="Please Login">
+						<a href="<?php echo base_url(); ?>">
+							<input type="button" name="next" class="btn btn-main-color btn-width-all" value="Next">
 						</a>
 					</div>
 				</div>

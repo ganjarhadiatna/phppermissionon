@@ -9,9 +9,12 @@
 	<?php if (isset($_GET['iduser'])) { ?>
 		<?php
 			$iduser = $_GET['iduser'];
-			$status = $ss->get('status');
+			$status = $_GET['status'];
 			$ex = $cn->delete($iduser, $status);
 			if ($ex == 'Success') {
+				if ($ss->get('status') != 'admin' || $ss->get('iduser') == $iduser) {
+					$ss->end();
+				}
 		?>
 			<div class="frame-login">
 				<div class="top">

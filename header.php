@@ -19,9 +19,9 @@
 			<div class="logo">
 				<a href="<?php echo base_url(''); ?>">
 					<?php if (!empty($ss->get('iduser'))) { ?>
-						Hi <?php echo $ss->get('status'); ?>
+						Hi <?php echo $ss->get('name'); ?>
 					<?php } else { ?>
-						Session
+						Hi Guest
 					<?php } ?>
 				</a>
 			</div>
@@ -30,12 +30,17 @@
 					<a href="<?php echo base_url('logout.php'); ?>">
 						<input type="button" name="logout" class="btn btn-sekunder-color" value="Logout">
 					</a>
+					<?php if ($ss->get('status') == 'admin') { ?>
+						<a href="<?php echo base_url('register.php'); ?>">
+							<input type="button" name="register" class="btn btn-main-color" value="Add New User" style="margin-left: 10px;">
+						</a>
+					<?php } ?>
 				<?php } else { ?>
 					<a href="<?php echo base_url('login.php'); ?>">
-						<input type="button" name="login" class="btn btn-sekunder-color" value="Login" style="margin-right: 10px;">
+						<input type="button" name="login" class="btn btn-sekunder-color" value="Login">
 					</a>
 					<a href="<?php echo base_url('register.php'); ?>">
-						<input type="button" name="register" class="btn btn-main-color" value="Register">
+						<input type="button" name="register" class="btn btn-main-color" value="Register" style="margin-left: 10px;">
 					</a>
 				<?php } ?>
 			</div>

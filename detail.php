@@ -43,7 +43,7 @@
 							<td><?php echo $dt['created']; ?></td>
 							<?php if ($ss->get('status') == 'admin' || $dt['idusers'] == $ss->get('iduser')) { ?>
 								<td>
-									<a href="<?php echo base_url('delete.php?iduser='.$dt['idusers']); ?>" class="link">
+									<a href="<?php echo base_url('delete.php?iduser='.$dt['idusers'].'&status='.$dt['status']); ?>" class="link">
 										Delete User
 									</a>
 								</td>

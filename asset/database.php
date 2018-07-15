@@ -7,6 +7,7 @@
 		private $database = 'dbatol';
 		public $conn = '';
 
+		//connection
 		public function cn()
 		{
 			$this->conn = mysqli_connect(
@@ -29,7 +30,7 @@
 			return $this->conn->close();
 		}
 
-		//query
+		//user query
 		public function insert($name, $email, $password, $status)
 		{
 			if ($this->cn()) {
@@ -47,7 +48,7 @@
 		public function delete($iduser, $status)
 		{
 			if ($this->cn()) {
-				$q = $this->conn->query("delete from users where iduser='".$iduser."' and status='".$status."'");
+				$q = $this->conn->query("delete from users where idusers='".$iduser."' and status='".$status."'");
 				if ($q) {
 					return 'Success';
 				} else {
@@ -61,7 +62,7 @@
 		public function get_all()
 		{
 			if ($this->cn()) {
-				$q = $this->conn->query("select idusers, name, email, status, created from users");
+				$q = $this->conn->query("select idusers, name, email, status, created from users order by status");
 				if ($q->num_rows > 0) {
 					while ($data = $q->fetch_array()) {
 						$datas[] = $data;
@@ -94,10 +95,11 @@
 			$this->cl();
 		}
 
+		//auth
 		public function auth($email, $password, $status)
 		{
 			if ($this->cn()) {
-				$q = $this->conn->query("select idusers, status from users where email='".$email."' and password='".md5($password)."' and status='".$status."'");
+				$q = $this->conn->query("select idusers, status, name from users where email='".$email."' and password='".md5($password)."' and status='".$status."'");
 				if ($q->num_rows > 0) {
 					while ($data = $q->fetch_array()) {
 						$datas[] = $data;
