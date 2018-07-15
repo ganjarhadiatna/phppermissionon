@@ -40,7 +40,21 @@
 					return $this->conn->error;
 				}
 			} else {
-				echo 'connection failed';
+				return 'connection failed';
+			}
+			$this->cl();
+		}
+		public function delete($iduser, $status)
+		{
+			if ($this->cn()) {
+				$q = $this->conn->query("delete from users where iduser='".$iduser."' and status='".$status."'");
+				if ($q) {
+					return 'Success';
+				} else {
+					return $this->conn->error;
+				}
+			} else {
+				return 'connection failed';
 			}
 			$this->cl();
 		}
